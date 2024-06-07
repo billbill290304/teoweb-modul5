@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganti Geset</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            height: 350px;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            align-items: center;
+        }
+        .ganti {
+            border: none;
+            height: 30px;
+            width: 100%;
+            background-color: black;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        #judul {
+            font-size: 15px;
+            color: black;
+            margin-bottom: 10px;
+        }
+        .button {
+            border: none;
+            height: 40px;
+            width: 100%;
+            background-color: black;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .icon {
+            position: absolute;
+            top: 78%;
+            left: 16%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+        }
+        @media (min-width: 576px) {
+            .button {
+                width: 48%;
+            }
+            #left, #up {
+                margin-right: 4%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="ganti" id="gantiWarnaButton"><i class="ph-fill ph-swap"></i></button>
+        <h1 id="judul">api jQuery position & offset</h1>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <button class="button" id="left"><i class="ph-fill ph-arrow-fat-left"></i></button>
+            <button class="button" id="right"><i class="ph-fill ph-arrow-fat-right"></i></button>
+            <button class="button" id="up"><i class="ph-fill ph-arrow-fat-up"></i></button>
+            <button class="button" id="down"><i class="ph-fill ph-arrow-fat-down"></i></button>
+        </div>
+        <i class="ph-fill ph-car-profile icon" id="car"></i>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            const colors = ['red', 'green', 'blue', 'orange'];
+            let currentColorIndex = 0;
+            $('#gantiWarnaButton').on('click', function() {
+                const $billkaf = $('#judul');
+                $billkaf.css('color', colors[currentColorIndex]);
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+            });
+
+            const moveDistance1 = 153;
+            const moveDistance2 = 50;
+            $('#left').on('click', function() {
+                $('#car').animate({
+                    left: "-=" + moveDistance1 + "px"
+                });
+            });
+
+            $('#right').on('click', function() {
+                $('#car').animate({
+                    left: "+=" + moveDistance1 + "px"
+                });
+            });
+
+            $('#up').on('click', function() {
+                $('#car').animate({
+                    top: "-=" + moveDistance2 + "px"
+                });
+            });
+
+            $('#down').on('click', function() {
+                $('#car').animate({
+                    top: "+=" + moveDistance2 + "px"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
